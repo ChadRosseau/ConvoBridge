@@ -77,8 +77,6 @@ const AudioRecorder = ({
     setRecordingStatus(RecordingStatus.Stored);
   };
 
-  getMicrophonePermission();
-
   return (
     <div>
       <main>
