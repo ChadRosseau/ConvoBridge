@@ -26,11 +26,15 @@ class CustomFormData extends FormData {
 }
 
 export class Translator {
-    configuration = new Configuration({
-        apiKey: "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",
-        formDataCtor: CustomFormData,
-    });
-    openai = new OpenAIApi(this.configuration);
+    openai: OpenAIApi;
+
+    constructor() {
+        const configuration = new Configuration({
+            apiKey: process.env.OPENAI_API_KEY,
+            formDataCtor: CustomFormData,
+        });
+        this.openai = new OpenAIApi(configuration);
+    }
 
     public async translate(audioBlob: Blob, sourceLanguage: string, targetLanguage: string) {
         const audioFile = this.convertBlobToFile(audioBlob);
@@ -56,7 +60,6 @@ export class Translator {
 
     private async transcribeAudio(audioFile: File, sourceLanguage: string): Promise<string> {
         const lang = ISO.getCode(sourceLanguage);
-        console.log(lang);
         const resp = await this.openai.createTranscription(audioFile, "whisper-1", undefined, undefined, undefined, lang);
         return resp['data']['text'];
     }
