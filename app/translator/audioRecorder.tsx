@@ -49,8 +49,8 @@ const AudioRecorder = ({
     } catch (err1) {
       try {
         // Fallback for iOS
-        media = new MediaRecorder(stream, { mimeType: "video/mp4" });
-        setMimeType("video/mp4");
+        media = new MediaRecorder(stream, { mimeType: "audio/mp4" });
+        setMimeType("audio/mp4");
       } catch (err2) {
         // If fallback doesn't work either. Log / process errors.
         console.error({ err1 });

@@ -50,8 +50,8 @@ export class Translator {
     }
 
     private convertBlobToFile(audioBlob: Blob): File {
-        const name = audioBlob.type == "video/mp4" ? "audio.mp4" : 'audio.mp3';
-        const type = audioBlob.type == "video/mp4" ? "video/mp4" : 'audio/mp3';
+        const name = audioBlob.type == "audio/mp4" ? "audio.mp4" : 'audio.mp3';
+        const type = audioBlob.type == "audio/mp4" ? "audio/mp4" : 'audio/mp3';
         const audio = new File(
             [audioBlob],
             name,
