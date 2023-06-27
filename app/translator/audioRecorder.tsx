@@ -19,7 +19,7 @@ const AudioRecorder = ({
   const [stream, setStream] = useState<MediaStream | null>(null);
   const [audioChunks, setAudioChunks] = useState<Blob[]>([]);
   const [audio, setAudio] = useState<string | null>(null);
-  let mimeType: string = "";
+  let mimeType: string = "hi";
 
   const getMicrophonePermission = async () => {
     if ("MediaRecorder" in window) {
