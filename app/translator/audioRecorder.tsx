@@ -80,6 +80,7 @@ const AudioRecorder = ({
       console.log(mimeType);
       // Creates a blob file from the audiochunks data
       const audioBlob = new Blob(audioChunks, { type: mimeType });
+      console.log(audioBlob.type);
 
       // Updates convo
       convoHandler.setAudio(audioBlob);
