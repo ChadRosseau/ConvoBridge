@@ -77,6 +77,7 @@ const AudioRecorder = ({
     if (!mediaRecorder.current) return;
     mediaRecorder.current.stop();
     mediaRecorder.current.onstop = async () => {
+      console.log(mimeType);
       // Creates a blob file from the audiochunks data
       const audioBlob = new Blob(audioChunks, { type: mimeType });
 
