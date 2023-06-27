@@ -19,7 +19,7 @@ const AudioRecorder = ({
   const [stream, setStream] = useState<MediaStream | null>(null);
   const [audioChunks, setAudioChunks] = useState<Blob[]>([]);
   const [audio, setAudio] = useState<string | null>(null);
-  let mimeType: string = "hi";
+  const [mimeType, setMimeType] = useState<string>("hi");
 
   const getMicrophonePermission = async () => {
     if ("MediaRecorder" in window) {
@@ -45,12 +45,12 @@ const AudioRecorder = ({
     let media = null;
     try {
       media = new MediaRecorder(stream, { mimeType: "audio/webm" });
-      mimeType = "audio/webm";
+      setMimeType("audio/webm");
     } catch (err1) {
       try {
         // Fallback for iOS
         media = new MediaRecorder(stream, { mimeType: "video/mp4" });
-        mimeType = "video/mp4";
+        setMimeType("video/mp4");
       } catch (err2) {
         // If fallback doesn't work either. Log / process errors.
         console.error({ err1 });
